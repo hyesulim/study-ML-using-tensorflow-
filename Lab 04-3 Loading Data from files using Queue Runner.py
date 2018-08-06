@@ -18,8 +18,7 @@ xy = tf.decode_csv(value, record_defaults=record_defaults)
 
 # xy로 읽어온 것을 batch를 이용하여 pump처럼 가져와 읽을 것임.
 # 한번에 10개씩 읽을 것임.
-train_x_batch, train_y_batch = \
-    tf.train.batch([xy[0:-1], xy[:-1]], batch_size=10)
+train_x_batch, train_y_batch = tf.train.batch([xy[0:-1], xy[-1:]], batch_size=10)
 
 # placeholders for a tensor that will be always fed
 X = tf.placeholder(tf.float32, shape=[None, 3]) # [# of instances, 3 features]
@@ -54,8 +53,11 @@ for step in range(2001):
     cost_val, hy_val, _ = sess.run(
         [cost, hypothesis, train],
         feed_dict={X: x_batch, Y: y_batch})
-    if step % 10 == 0 :
+    if step % 10 == 0:
         print(step, "Cost: ", cost_val, "\nPrediction:\n", hy_val)
+
+coord.request_stop()
+coord.join(threads)
 
 # shuffle_batch 등 batch의 순서를 섞는 함수 등도 다양하게 존재함.
 
