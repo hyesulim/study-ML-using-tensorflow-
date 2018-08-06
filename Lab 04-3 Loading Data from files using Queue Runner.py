@@ -57,7 +57,7 @@ for step in range(2001):
     if step % 10 == 0 :
         print(step, "Cost: ", cost_val, "\nPrediction:\n", hy_val)
 
-# suffle_batch 등 batch의 순서를 섞는 함수 등도 다양하게 존재함.
+# shuffle_batch 등 batch의 순서를 섞는 함수 등도 다양하게 존재함.
 
 
 
