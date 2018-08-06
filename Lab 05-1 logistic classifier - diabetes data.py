@@ -31,3 +31,5 @@ with tf.Session() as sess:
     h, c, a = sess.run([hypothesis, predicted, accuracy], feed_dict={X: x_data, Y: y_data})
 
     print("\nHypothesis:\n", h, "\nCorrect (Y):\n", c, "\nAccuracy: ", a)
+
+# Try other classification data from Kaggle https://www.kaggle.com
