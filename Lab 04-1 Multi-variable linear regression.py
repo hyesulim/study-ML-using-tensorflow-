@@ -43,6 +43,7 @@ sess.run(tf.global_variables_initializer())
 for step in range(2001):
    # cost_val, hy_val, _ = sess.run([cost, hypothesis, train],
    #                               feed_dict = {x1: x1_data, x2: x2_data, x3: x3_data, Y: y_data})
-    cost_val, hy_val, _ = sess.run([cost, hypothesis, train], feed_dict={X : x_data, Y: y_data})
+    cost_val, hy_val, _ = sess.run([cost, hypothesis, train],
+                                   feed_dict={X : x_data, Y: y_data})
     if step % 10 == 0:
-        print(step, "Cost: ", cost_val, "\nPrdiction:\n", hy_val)
+        print(step, "Cost: ", cost_val, "\nPrediction:\n", hy_val)
