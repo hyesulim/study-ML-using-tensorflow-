@@ -50,4 +50,4 @@ with tf.Session() as sess:
             print(step, sess.run(cost, feed_dict={X: x_data, Y: y_data}))
 
     all = sess.run(hypothesis, feed_dict={X: [[1,11,7,9], [1,3,4,3], [1,1,0,1]]})
-    print(all, sess.run(tf.arg_max(all, 1)))
+    print(all, sess.run(tf.arg_max(all, 1)))  # 가장 높은 확률을 가지는 argument의 index 출력.
