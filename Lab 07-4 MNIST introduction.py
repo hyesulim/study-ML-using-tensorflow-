@@ -1,5 +1,7 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
+import matplotlib.pyplot as plt
+import random
 
 # one_hot = True로 하면 데이터가 one-hot 형태로 읽힘.
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
@@ -44,3 +46,17 @@ with tf.Session() as sess:
             avg_cost += c / total_batch
 
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.9f}'.format(avg_cost))
+
+# 학습이 끝난이후에는 test data를 이용하여 성능(Accuracy)을 평가함.
+# 하나의 tensor만 실행시키는 경우 sess.run이 아니라 eval이라는 함수를 사용하기도 함.
+# Test the model using test sets
+
+    print("Accuracy: ", accuracy.eval(session=sess, feed_dict={X: mnist.test.images, Y: mnist.test.labels}))
+
+    # Get one and predict
+    r = random.randint(0, mnist.test.num_examples - 1)
+    print("Label:", sess.run(tf.argmax(mnist.test.labels[r:r+1], 1)))
+    print("Prediction:", sess.run(tf.argmax(hypothesis, 1),
+                                  feed_dict={X: mnist.test.images[r:r+1]}))
+    plt.imshow(mnist.test.images[r:r+1].reshape(28, 28), cmap='Greys', interpolation='nearest')
+    plt.show()
