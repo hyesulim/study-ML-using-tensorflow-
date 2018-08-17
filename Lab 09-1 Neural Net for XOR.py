@@ -1,4 +1,5 @@
 # XOR 구현
+# XOR with logistic regression
 
 import tensorflow as tf
 import numpy as np
@@ -30,3 +31,19 @@ with tf.Session() as sess:
     # Accuracy report
     h, c, a = sess.run([hypothesis, predicted, accuracy], feed_dict={X: x_data, Y: y_data})
     print("\nHypothesis: ",h,"\nCorrect: ",c, "\nAccuracy: ", a)
+
+# 모델이 정확함에도 불구하고 정확도는 0.5가 나오며 ML이 잘 작동하지 않음.
+'''
+Hypothesis:  [[ 0.5]
+ [ 0.5]
+ [ 0.5]
+ [ 0.5]] 
+Correct:  [[ 0.]
+ [ 0.]
+ [ 0.]
+ [ 0.]] 
+Accuracy:  0.5
+
+'''
+
+# 따라서 여러 unit으로 구성된 NN을 사용할 것임.
