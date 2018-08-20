@@ -45,17 +45,18 @@ for epoch in range(training_epochs):
         c, _ = sess.run([cost, optimizer], feed_dict=feed_dict)
         avg_cost += c / total_batch
 
-        print('Epoch:', '%04d'%(epoch+1), 'cost =', '{:.9f}'.format(avg_cost))
+        if i == total_batch-1:
+            print('Epoch:', '%04d'%(epoch+1), 'cost =', '{:.9f}'.format(avg_cost))
 
-    print('Learning Finished!')
+print('Learning Finished!')
 
-    # Test model and check accuracy
-    correct_prediction = tf.equal(tf.argmax(hypothesis, 1), tf.argmax(Y, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct_prediction, dtype=tf.float32))
-    print('Accuracy:', sess.run(accuracy, feed_dict={
-        X: mnist.test.images, Y: mnist.test.labels}))
+# Test model and check accuracy
+correct_prediction = tf.equal(tf.argmax(hypothesis, 1), tf.argmax(Y, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, dtype=tf.float32))
+print('Accuracy:', sess.run(accuracy, feed_dict={
+    X: mnist.test.images, Y: mnist.test.labels}))
 
-    # Get one and predict
-    r = random.randint(0, mnist.test.num_examples - 1)
-    print("Label: ", sess.run(tf.argmax(mnist.test.labels[r:r+1], 1)))
-    print("Prediction: ", sess.run(tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r:r+1]}))
+# Get one and predict
+r = random.randint(0, mnist.test.num_examples - 1)
+print("Label: ", sess.run(tf.argmax(mnist.test.labels[r:r+1], 1)))
+print("Prediction: ", sess.run(tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r:r+1]}))
