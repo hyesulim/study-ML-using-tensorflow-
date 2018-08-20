@@ -60,3 +60,25 @@ print('Accuracy:', sess.run(accuracy, feed_dict={
 r = random.randint(0, mnist.test.num_examples - 1)
 print("Label: ", sess.run(tf.argmax(mnist.test.labels[r:r+1], 1)))
 print("Prediction: ", sess.run(tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r:r+1]}))
+
+'''
+Epoch: 0001 cost = 176.478121969
+Epoch: 0002 cost = 41.440278060
+Epoch: 0003 cost = 25.498767084
+Epoch: 0004 cost = 17.608643353
+Epoch: 0005 cost = 12.685689016
+Epoch: 0006 cost = 9.447126481
+Epoch: 0007 cost = 7.028680774
+Epoch: 0008 cost = 5.335929369
+Epoch: 0009 cost = 4.020305408
+Epoch: 0010 cost = 3.029604134
+Epoch: 0011 cost = 2.222201032
+Epoch: 0012 cost = 1.653102755
+Epoch: 0013 cost = 1.248821452
+Epoch: 0014 cost = 1.041176940
+Epoch: 0015 cost = 0.862166326
+Learning Finished!
+Accuracy: 0.946
+Label:  [2]
+Prediction:  [2]
+'''
