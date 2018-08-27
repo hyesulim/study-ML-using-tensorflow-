@@ -11,8 +11,6 @@ batch_size = 100
 
 keep_prob = tf.placeholder(tf.float32)
 
-
-
 X = tf.placeholder(tf.float32, shape=[None, 784])
 X_img = tf.reshape(X, shape=[-1, 28, 28, 1])
 Y = tf.placeholder(tf.float32, shape=[None, 10])
