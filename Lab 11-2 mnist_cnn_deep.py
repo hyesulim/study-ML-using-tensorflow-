@@ -3,13 +3,15 @@ import tensorflow as tf
 import random
 from tensorflow.examples.tutorials.mnist import input_data
 
-learning_rate = 0.01
+mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+learning_rate = 0.001
 training_epochs = 15
 batch_size = 100
 
 keep_prob = tf.placeholder(tf.float32)
 
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
 
 X = tf.placeholder(tf.float32, shape=[None, 784])
 X_img = tf.reshape(X, shape=[-1, 28, 28, 1])
