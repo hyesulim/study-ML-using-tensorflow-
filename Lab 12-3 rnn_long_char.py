@@ -37,6 +37,17 @@ Y = tf.placeholder(tf.int32, [None, sequence_length])
 X_one_hot = tf.one_hot(X, num_classes)
 print(X_one_hot)
 
+'''
+0 if you wan -> f you want
+1 f you want ->  you want 
+2  you want  -> you want t
+3 you want t -> ou want to
+...
+167 y of the s ->  of the se
+168  of the se -> of the sea
+169 of the sea -> f the sea.
+'''
+
 
 # Make a lstm cell with hidden_size (each unit output vector size)
 def lstm_cell():
